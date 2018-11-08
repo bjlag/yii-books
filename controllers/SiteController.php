@@ -2,14 +2,19 @@
 
 namespace app\controllers;
 
+use app\models\Authors;
+use app\models\Books;
+use app\models\LoginForm;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\Response;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
 
+/**
+ * Контроллер для вывода общедоступной информации и формы аутентификации.
+ */
 class SiteController extends Controller
 {
     /**
@@ -19,7 +24,7 @@ class SiteController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'only' => ['logout'],
                 'rules' => [
                     [
@@ -30,7 +35,7 @@ class SiteController extends Controller
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
                 ],
@@ -55,18 +60,82 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays homepage.
-     *
+     * Вывод главной страницы.
      * @return string
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $dataProvider = new ActiveDataProvider([
+            'query' => Books::find()->joinWith(Books::RELATION_AUTHORS),
+            'pagination' => [
+                'pageSize' => Yii::$app->params['paginationSize'],
+            ],
+        ]);
+
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     /**
-     * Login action.
-     *
+     * Вывод подробной информации о книге.
+     * @param integer $id
+     * @return string
+     */
+    public function actionBook($id)
+    {
+        $modelBook = Books::find()
+            ->joinWith([Books::RELATION_AUTHORS, Books::RELATION_BINDING, Books::RELATION_LANGUAGE])
+            ->where(['books.id' => $id])
+            ->one();
+
+        return $this->render('book', [
+            'model' => $modelBook
+        ]);
+    }
+
+    /**
+     * Вывод информации об авторах.
+     * @return string
+     */
+    public function actionAuthors()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Authors::find()->joinWith(Authors::RELATION_BOOKS),
+            'pagination' => [
+                'pageSize' => Yii::$app->params['paginationSize'],
+            ],
+        ]);
+
+        return $this->render('authors', [
+            'dataProvider' => $dataProvider
+        ]);
+    }
+
+    /**
+     * Вывод подробной информации об авторе.
+     * @param integer $id
+     * @return string
+     */
+    public function actionAuthor($id)
+    {
+        $modelAuthor = Authors::find()->where(['authors.id' => $id])->one();
+
+        $dataProviderBooks = new ActiveDataProvider([
+            'query' => Books::find()->joinWith(Books::RELATION_AUTHORS)->where(['authors.id' => $id]),
+            'pagination' => [
+                'pageSize' => Yii::$app->params['paginationSize'],
+            ],
+        ]);
+
+        return $this->render('author', [
+            'model' => $modelAuthor,
+            'dataProviderBooks' => $dataProviderBooks
+        ]);
+    }
+
+    /**
+     * Форма для входа в административный раздел.
      * @return Response|string
      */
     public function actionLogin()
@@ -87,8 +156,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Logout action.
-     *
+     * Выход с сайта.
      * @return Response
      */
     public function actionLogout()
@@ -96,33 +164,5 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
-    }
-
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
     }
 }

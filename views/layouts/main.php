@@ -3,15 +3,16 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use app\assets\AppAsset;
 use app\widgets\Alert;
-use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
 
 AppAsset::register($this);
 ?>
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
@@ -38,16 +39,26 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Книги', 'url' => ['/site/index']],
+            ['label' => 'Авторы', 'url' => ['/site/authors']],
+            [
+                'label' => 'Администрирование',
+                'visible' => !Yii::$app->user->isGuest,
+                'items' => [
+                    ['label' => 'Книги', 'url' => ['/books/index']],
+                    ['label' => 'Авторы', 'url' => ['/authors/index']],
+                    ['label' => 'Языки', 'url' => ['/languages/index']],
+                    ['label' => 'Переплеты', 'url' => ['/bindings/index']],
+                    ['label' => 'Пользователи', 'url' => ['/user/index']]
+                ],
+            ],
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
+            ['label' => 'Войти', 'url' => ['/site/login']]
             ) : (
                 '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
+                . Html::beginForm(['site/logout'], 'post')
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    'Выйти (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
@@ -69,9 +80,8 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-left">&copy; <?= Yii::$app->name . ' ' . date('Y') ?></p>
+        <p class="pull-right"><a href="https://github.com/bjlag" target="_blank">Владислав Дуплин</a></p>
     </div>
 </footer>
 

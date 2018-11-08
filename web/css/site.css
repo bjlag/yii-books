@@ -3,6 +3,10 @@ body {
     height: 100%;
 }
 
+h1 {
+    margin-bottom: 30px;
+}
+
 .wrap {
     min-height: 100%;
     height: auto;
@@ -112,4 +116,27 @@ a.desc:after {
 
 .nav > li > form > button.logout:focus {
     outline: none;
+}
+
+.mb {
+    margin-bottom: 30px;
+}
+
+.row-flex, .row-flex div[class*='col-'] {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex:1 1 auto;
+}
+
+.row-flex-wrap {
+    -webkit-flex-flow: row wrap;
+    align-content: flex-start;
+    flex:0;
+}
+
+.row-flex div[class*='col-'] {
+    margin:-.2px;
 }
