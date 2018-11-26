@@ -3,9 +3,24 @@
 namespace tests\models;
 
 use app\models\User;
+use app\tests\fixtures\UserFixture;
 
 class UserTest extends \Codeception\Test\Unit
 {
+    /**
+     * @var \UnitTester
+     */
+    protected $tester;
+
+    protected function _before()
+    {
+        $this->tester->haveFixtures([
+            'user' => [
+                'class' => UserFixture::class,
+            ]
+        ]);
+    }
+
     public function testFindUserById()
     {
         /** @var User $user */

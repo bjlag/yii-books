@@ -3,10 +3,25 @@
 namespace tests\models;
 
 use app\models\LoginForm;
+use app\tests\fixtures\UserFixture;
 
 class LoginFormTest extends \Codeception\Test\Unit
 {
     private $model;
+
+    /**
+     * @var \UnitTester
+     */
+    protected $tester;
+
+    protected function _before()
+    {
+        $this->tester->haveFixtures([
+            'user' => [
+                'class' => UserFixture::class,
+            ]
+        ]);
+    }
 
     protected function _after()
     {
