@@ -12,8 +12,8 @@ use yii\helpers\Url;
  * @property string $image
  * @property int $pages
  * @property string $isbn
- * @property int $id_language
- * @property int $id_binding
+ * @property int $language_id
+ * @property int $binding_id
  * @property int $weight
  *
  * @property Bindings $binding
@@ -40,13 +40,13 @@ class Books extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'pages', 'isbn', 'id_language', 'id_binding', 'weight'], 'required'],
-            [['pages', 'id_language', 'id_binding', 'weight'], 'integer'],
+            [['name', 'pages', 'isbn', 'language_id', 'binding_id', 'weight'], 'required'],
+            [['pages', 'language_id', 'binding_id', 'weight'], 'integer'],
             [['name'], 'string', 'max' => 100],
             [['image'], 'string', 'max' => 75],
             [['isbn'], 'string', 'max' => 17],
-            [['id_binding'], 'exist', 'skipOnError' => true, 'targetClass' => Bindings::class, 'targetAttribute' => ['id_binding' => 'id']],
-            [['id_language'], 'exist', 'skipOnError' => true, 'targetClass' => Languages::class, 'targetAttribute' => ['id_language' => 'id']],
+            [['binding_id'], 'exist', 'skipOnError' => true, 'targetClass' => Bindings::class, 'targetAttribute' => ['binding_id' => 'id']],
+            [['language_id'], 'exist', 'skipOnError' => true, 'targetClass' => Languages::class, 'targetAttribute' => ['language_id' => 'id']],
         ];
     }
 
@@ -61,8 +61,8 @@ class Books extends \yii\db\ActiveRecord
             'image' => 'Обложка',
             'pages' => 'Страниц',
             'isbn' => 'ISBN',
-            'id_language' => 'Язык',
-            'id_binding' => 'Переплет',
+            'language_id' => 'Язык',
+            'binding_id' => 'Переплет',
             'weight' => 'Вес',
             'authors.name' => 'Авторство'
         ];
@@ -78,7 +78,7 @@ class Books extends \yii\db\ActiveRecord
      */
     public function getBinding()
     {
-        return $this->hasOne(Bindings::class, ['id' => 'id_binding']);
+        return $this->hasOne(Bindings::class, ['id' => 'binding_id']);
     }
 
     /**
@@ -86,7 +86,7 @@ class Books extends \yii\db\ActiveRecord
      */
     public function getLanguage()
     {
-        return $this->hasOne(Languages::class, ['id' => 'id_language']);
+        return $this->hasOne(Languages::class, ['id' => 'language_id']);
     }
 
     /**
