@@ -2,17 +2,28 @@
 
 namespace app\core\services;
 
-use app\core\entities\User;
 use app\core\forms\LoginForm;
+use app\core\repositories\UserRepository;
 use Yii;
 
 class AuthService
 {
+    private $user;
+
+    public function __construct(UserRepository $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @param LoginForm $form
+     * @throws \yii\web\NotFoundHttpException
+     */
     public function login(LoginForm $form): void
     {
-        $user = User::findByUsername($form->username);
+        $user = $this->user->findByUsername($form->username);
 
-        if ($user === null || !$user->validatePassword($form->password)) {
+        if ($user === null || !$this->validatePassword($form->password, $user->password_hash)) {
             throw new \DomainException('Неверный логин или пароль.');
         }
 
@@ -22,5 +33,10 @@ class AuthService
     public function logout(): void
     {
         Yii::$app->user->logout();
+    }
+
+    private function validatePassword(string $password, string $password_hash)
+    {
+        return \Yii::$app->getSecurity()->validatePassword($password, $password_hash);
     }
 }

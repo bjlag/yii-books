@@ -115,11 +115,11 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
     /**
      * {@inheritdoc}
-     * @return \app\models\query\UserQuery the active query used by this AR class.
+     * @return \app\core\entities\query\UserQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new \app\models\query\UserQuery(get_called_class());
+        return new query\UserQuery(static::class);
     }
 
     /**
@@ -167,28 +167,6 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function validateAuthKey($authKey)
     {
         return $this->getAuthKey() === $authKey;
-    }
-
-    /**
-     * Validates password
-     *
-     * @param string $password password to validate
-     * @return bool if password provided is valid for current user
-     */
-    public function validatePassword($password)
-    {
-        return \Yii::$app->getSecurity()->validatePassword($password, $this->password_hash);
-    }
-
-    /**
-     * Finds user by username
-     *
-     * @param string $username
-     * @return User|array|null
-     */
-    public static function findByUsername($username)
-    {
-        return self::find()->byUsername($username)->one();
     }
 
     /**
