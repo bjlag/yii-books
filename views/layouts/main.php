@@ -49,7 +49,8 @@ AppAsset::register($this);
                     ['label' => 'Авторы', 'url' => ['/authors/index']],
                     ['label' => 'Языки', 'url' => ['/languages/index']],
                     ['label' => 'Переплеты', 'url' => ['/bindings/index']],
-                    ['label' => 'Пользователи', 'url' => ['/user/index']]
+                    ['label' => 'Пользователи', 'url' => ['/user/index']],
+                    ['label' => 'Логи', 'url' => ['/admin/logs']],
                 ],
             ],
             Yii::$app->user->isGuest ? (
