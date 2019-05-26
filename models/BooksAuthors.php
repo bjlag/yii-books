@@ -5,8 +5,8 @@ namespace app\models;
 /**
  * This is the model class for table "books_authors".
  *
- * @property int $id_book
- * @property int $id_author
+ * @property int $book_id
+ * @property int $author_id
  *
  * @property Authors $author
  * @property Books $book
@@ -21,7 +21,7 @@ class BooksAuthors extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'books_authors';
+        return '{{%books_authors}}';
     }
 
     /**
@@ -30,11 +30,11 @@ class BooksAuthors extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_book', 'id_author'], 'required'],
-            [['id_book', 'id_author'], 'integer'],
-            [['id_book', 'id_author'], 'unique', 'targetAttribute' => ['id_book', 'id_author']],
-            [['id_author'], 'exist', 'skipOnError' => true, 'targetClass' => Authors::class, 'targetAttribute' => ['id_author' => 'id']],
-            [['id_book'], 'exist', 'skipOnError' => true, 'targetClass' => Books::class, 'targetAttribute' => ['id_book' => 'id']],
+            [['book_id', 'author_id'], 'required'],
+            [['book_id', 'author_id'], 'integer'],
+            [['book_id', 'author_id'], 'unique', 'targetAttribute' => ['book_id', 'author_id']],
+            [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => Authors::class, 'targetAttribute' => ['author_id' => 'id']],
+            [['book_id'], 'exist', 'skipOnError' => true, 'targetClass' => Books::class, 'targetAttribute' => ['book_id' => 'id']],
         ];
     }
 
@@ -44,8 +44,8 @@ class BooksAuthors extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_book' => 'Id Book',
-            'id_author' => 'Id Author',
+            'book_id' => 'Id Book',
+            'author_id' => 'Id Author',
         ];
     }
 
@@ -54,7 +54,7 @@ class BooksAuthors extends \yii\db\ActiveRecord
      */
     public function getAuthor()
     {
-        return $this->hasOne(Authors::class, ['id' => 'id_author']);
+        return $this->hasOne(Authors::class, ['id' => 'author_id']);
     }
 
     /**
@@ -62,7 +62,7 @@ class BooksAuthors extends \yii\db\ActiveRecord
      */
     public function getBook()
     {
-        return $this->hasOne(Books::class, ['id' => 'id_book']);
+        return $this->hasOne(Books::class, ['id' => 'book_id']);
     }
 
     /**
