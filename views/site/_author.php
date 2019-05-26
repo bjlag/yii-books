@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $model \app\models\Authors */
+/* @var $model \app\core\entities\Authors */
 ?>
 
 <div class="col-xs-12 col-md-6 col-lg-4">

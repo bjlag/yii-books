@@ -1,13 +1,13 @@
 <?php
 
-namespace app\models\query;
+namespace app\core\entities\query;
 
 /**
- * This is the ActiveQuery class for [[\app\models\Languages]].
+ * This is the ActiveQuery class for [[\app\core\entities\BooksAuthors]].
  *
- * @see \app\models\Languages
+ * @see \app\core\entities\BooksAuthors
  */
-class LanguagesQuery extends \yii\db\ActiveQuery
+class BooksAuthorsQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class LanguagesQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \app\models\Languages[]|array
+     * @return \app\core\entities\BooksAuthors[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class LanguagesQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \app\models\Languages|array|null
+     * @return \app\core\entities\BooksAuthors|array|null
      */
     public function one($db = null)
     {

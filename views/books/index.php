@@ -27,14 +27,14 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'name',
                 'format' => 'html',
-                'value' => function (\app\models\Books $model) {
+                'value' => function (\app\core\entities\Books $model) {
                     return Html::a($model->name, ['books/view', 'id' => $model->id]);
                 }
             ],
             [
                 'attribute' => 'language.name',
                 'format' => 'html',
-                'value' => function (\app\models\Books $model) {
+                'value' => function (\app\core\entities\Books $model) {
                     return Html::a($model->language->name, ['languages/view', 'id' => $model->language->id]);
                 }
             ],

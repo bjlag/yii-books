@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace app\core\entities;
 
 /**
  * This is the model class for table "authors".
@@ -54,10 +54,10 @@ class Authors extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return \app\models\query\AuthorsQuery the active query used by this AR class.
+     * @return \app\core\entities\query\AuthorsQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new \app\models\query\AuthorsQuery(get_called_class());
+        return new query\AuthorsQuery(get_called_class());
     }
 }

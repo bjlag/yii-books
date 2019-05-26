@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\Authors;
+use app\core\entities\Authors;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
@@ -131,7 +131,7 @@ class AuthorsController extends Controller
     /**
      * Поиск модели Authors по порвичному ключу.
      * @param integer $id
-     * @return Authors the loaded model
+     * @return \app\core\entities\Authors the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)

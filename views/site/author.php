@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
-/* @var $model \app\models\Authors */
+/* @var $model \app\core\entities\Authors */
 /* @var $dataProviderBooks yii\data\ActiveDataProvider */
 
 $name = Html::encode($model->name);

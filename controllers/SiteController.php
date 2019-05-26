@@ -2,10 +2,10 @@
 
 namespace app\controllers;
 
+use app\core\entities\Authors;
+use app\core\entities\Books;
 use app\core\forms\LoginForm;
 use app\core\services\AuthService;
-use app\models\Authors;
-use app\models\Books;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;

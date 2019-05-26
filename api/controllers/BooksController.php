@@ -2,7 +2,7 @@
 
 namespace app\api\controllers;
 
-use app\models\Books;
+use app\core\entities\Books;
 use yii\filters\auth\HttpBasicAuth;
 use yii\filters\ContentNegotiator;
 use yii\rest\ActiveController;

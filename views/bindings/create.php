@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Bindings */
+/* @var $model \app\core\entities\Bindings */
 
 $this->title = 'Create Bindings';
 $this->params['breadcrumbs'][] = ['label' => 'Bindings', 'url' => ['index']];

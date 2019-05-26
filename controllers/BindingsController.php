@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\Bindings;
+use app\core\entities\Bindings;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;

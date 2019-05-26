@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Bindings */
+/* @var $model \app\core\entities\Bindings */
 
 $this->title = 'Переплет: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Переплеты', 'url' => ['index']];

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $model \app\models\Books */
+/* @var $model \app\core\entities\Books */
 
 $name = Html::encode($model->name);
 

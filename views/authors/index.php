@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'name',
                 'format' => 'html',
-                'value' => function (\app\models\Authors $model) {
+                'value' => function (\app\core\entities\Authors $model) {
                     return Html::a($model->name, ['authors/view', 'id' => $model->id]);
                 }
             ],

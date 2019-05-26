@@ -4,8 +4,8 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\BooksAuthors */
-/* @var $modelBook app\models\Books */
+/* @var $model \app\core\entities\BooksAuthors */
+/* @var $modelBook \app\core\entities\Books */
 /* @var $authors array */
 
 $this->title = 'Добавить автора';

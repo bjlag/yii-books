@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace app\core\entities;
 
 /**
  * This is the model class for table "bindings".
@@ -54,10 +54,10 @@ class Bindings extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return \app\models\query\BindingsQuery the active query used by this AR class.
+     * @return \app\core\entities\query\BindingsQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new \app\models\query\BindingsQuery(get_called_class());
+        return new query\BindingsQuery(get_called_class());
     }
 }

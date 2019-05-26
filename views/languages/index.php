@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'name',
                 'format' => 'html',
-                'value' => function (\app\models\Languages $model) {
+                'value' => function (\app\core\entities\Languages $model) {
                     return Html::a($model->name, ['languages/view', 'id' => $model->id]);
                 }
             ],

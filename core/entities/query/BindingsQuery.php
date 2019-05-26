@@ -1,13 +1,13 @@
 <?php
 
-namespace app\models\query;
+namespace app\core\entities\query;
 
 /**
- * This is the ActiveQuery class for [[\app\models\Authors]].
+ * This is the ActiveQuery class for [[\app\core\entities\Bindings]].
  *
- * @see \app\models\Authors
+ * @see \app\core\entities\Bindings
  */
-class AuthorsQuery extends \yii\db\ActiveQuery
+class BindingsQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class AuthorsQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \app\models\Authors[]|array
+     * @return \app\core\entities\Bindings[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class AuthorsQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \app\models\Authors|array|null
+     * @return \app\core\entities\Bindings|array|null
      */
     public function one($db = null)
     {

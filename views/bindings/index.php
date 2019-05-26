@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'name',
                 'format' => 'html',
-                'value' => function (\app\models\Bindings $model) {
+                'value' => function (\app\core\entities\Bindings $model) {
                     return Html::a($model->name, ['bindings/view', 'id' => $model->id]);
                 }
             ],

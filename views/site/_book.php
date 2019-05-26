@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model \app\models\Books */
+/* @var $model \app\core\entities\Books */
 
 $name = Html::encode($model->name);
 $arAuthors = [];

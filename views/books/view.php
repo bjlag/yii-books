@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Books */
+/* @var $model \app\core\entities\Books */
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Книги', 'url' => ['index']];
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'authors.name',
                 'format' => 'html',
-                'value' => function (\app\models\Books $model) {
+                'value' => function (\app\core\entities\Books $model) {
                     $arAuthors = [];
                     foreach ($model->authors as $author) {
                         $arAuthors[] = Html::a($author->name, ['authors/view', 'id' => $author->id]);
@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'image',
                 'format' => 'html',
-                'value' => function (\app\models\Books $model) {
+                'value' => function (\app\core\entities\Books $model) {
                     $result = 'Не задана';
                     if ($model->image) {
                         $result = Html::img($model->getImage(), [

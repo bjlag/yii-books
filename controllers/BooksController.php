@@ -2,11 +2,11 @@
 
 namespace app\controllers;
 
-use app\models\Authors;
-use app\models\Bindings;
-use app\models\Books;
-use app\models\BooksAuthors;
-use app\models\Languages;
+use app\core\entities\Authors;
+use app\core\entities\Bindings;
+use app\core\entities\Books;
+use app\core\entities\BooksAuthors;
+use app\core\entities\Languages;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
-/* @var $modelBook \app\models\Books */
+/* @var $modelBook \app\core\entities\Books */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Авторы книги: ' . $modelBook->name;
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = 'Изменить';
             [
                 'attribute' => 'author.name',
                 'format' => 'html',
-                'value' => function (\app\models\BooksAuthors $model) {
+                'value' => function (\app\core\entities\BooksAuthors $model) {
                     return Html::a($model->author->name, ['authors/view', 'id' => $model->id_author]);
                 }
             ],
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = 'Изменить';
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{delete}',
                 'buttons' => [
-                    'delete' => function ($url, \app\models\BooksAuthors $model) {
+                    'delete' => function ($url, \app\core\entities\BooksAuthors $model) {
                         return Html::a(\yii\bootstrap\Html::icon('trash'), [
                             'books/delete-authors',
                             'id_book' => $model->id_book,

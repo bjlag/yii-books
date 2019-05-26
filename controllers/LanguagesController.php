@@ -2,13 +2,13 @@
 
 namespace app\controllers;
 
+use app\core\entities\Languages;
 use Yii;
-use app\models\Languages;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * Контроллер для работы с моделью Languages.
@@ -130,7 +130,7 @@ class LanguagesController extends Controller
     /**
      * Поиск модели Languages по порвичному ключу.
      * @param integer $id
-     * @return Languages the loaded model
+     * @return \app\core\entities\Languages the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)

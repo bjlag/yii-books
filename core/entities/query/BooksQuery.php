@@ -1,11 +1,11 @@
 <?php
 
-namespace app\models\query;
+namespace app\core\entities\query;
 
 /**
- * This is the ActiveQuery class for [[\app\models\Books]].
+ * This is the ActiveQuery class for [[\app\core\entities\Books]].
  *
- * @see \app\models\Books
+ * @see \app\core\entities\Books
  */
 class BooksQuery extends \yii\db\ActiveQuery
 {
@@ -20,7 +20,7 @@ class BooksQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \app\models\Books[]|array
+     * @return \app\core\entities\Books[]|array
      */
     public function all($db = null)
     {
@@ -29,7 +29,7 @@ class BooksQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \app\models\Books|array|null
+     * @return \app\core\entities\Books|array|null
      */
     public function one($db = null)
     {

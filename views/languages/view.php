@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Languages */
+/* @var $model \app\core\entities\Languages */
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Языки', 'url' => ['index']];
