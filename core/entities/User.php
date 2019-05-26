@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace app\core\entities;
 
 use yii\behaviors\TimestampBehavior;
 use yii\web\IdentityInterface;
@@ -31,7 +31,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public static function tableName()
     {
-        return 'user';
+        return '{{%user}}';
     }
 
     /**

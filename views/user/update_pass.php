@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\User */
+/* @var $model \app\core\entities\User */
 
 $this->title = 'Пользователь: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Пользователи', 'url' => ['index']];

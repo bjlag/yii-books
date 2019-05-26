@@ -2,7 +2,7 @@
 
 namespace tests\models;
 
-use app\models\User;
+use app\core\entities\User;
 use app\tests\fixtures\UserFixture;
 
 class UserTest extends \Codeception\Test\Unit
@@ -24,25 +24,25 @@ class UserTest extends \Codeception\Test\Unit
     public function testFindUserById()
     {
         /** @var User $user */
-        expect_that($user = User::findIdentity(100));
+        expect_that($user = \app\core\entities\User::findIdentity(100));
         expect($user->username)->equals('admin');
 
-        expect_not(User::findIdentity(999));
+        expect_not(\app\core\entities\User::findIdentity(999));
     }
 
     public function testFindUserByAccessToken()
     {
-        /** @var User $user */
-        expect_that($user = User::findIdentityByAccessToken('100-token'));
+        /** @var \app\core\entities\User $user */
+        expect_that($user = \app\core\entities\User::findIdentityByAccessToken('100-token'));
         expect($user->username)->equals('admin');
 
-        expect_not(User::findIdentityByAccessToken('non-existing'));
+        expect_not(\app\core\entities\User::findIdentityByAccessToken('non-existing'));
     }
 
     public function testFindUserByUsername()
     {
-        expect_that($user = User::findByUsername('admin'));
-        expect_not(User::findByUsername('not-admin'));
+        expect_that($user = \app\core\entities\User::findByUsername('admin'));
+        expect_not(\app\core\entities\User::findByUsername('not-admin'));
     }
 
     /**
@@ -50,7 +50,7 @@ class UserTest extends \Codeception\Test\Unit
      */
     public function testValidateUser($user)
     {
-        $user = User::findByUsername('admin');
+        $user = \app\core\entities\User::findByUsername('admin');
         expect_that($user->validateAuthKey('test100key'));
         expect_not($user->validateAuthKey('test102key'));
 

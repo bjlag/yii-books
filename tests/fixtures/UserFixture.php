@@ -2,7 +2,7 @@
 
 namespace app\tests\fixtures;
 
-use app\models\User;
+use app\core\entities\User;
 use yii\test\ActiveFixture;
 
 class UserFixture extends ActiveFixture

@@ -26,14 +26,14 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'username',
                 'format' => 'html',
-                'value' => function (\app\models\User $model) {
+                'value' => function (\app\core\entities\User $model) {
                     return Html::a($model->username, ['user/view', 'id' => $model->id]);
                 }
             ],
             [
                 'attribute' => 'name',
                 'format' => 'html',
-                'value' => function (\app\models\User $model) {
+                'value' => function (\app\core\entities\User $model) {
                     return Html::a($model->name, ['user/view', 'id' => $model->id]);
                 }
             ],

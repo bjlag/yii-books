@@ -3,15 +3,15 @@
 namespace app\models\query;
 
 /**
- * This is the ActiveQuery class for [[\app\models\User]].
+ * This is the ActiveQuery class for [[\app\core\entities\User]].
  *
- * @see \app\models\User
+ * @see \app\core\entities\User
  */
 class UserQuery extends \yii\db\ActiveQuery
 {
     /**
      * {@inheritdoc}
-     * @return \app\models\User[]|array
+     * @return \app\core\entities\User[]|array
      */
     public function all($db = null)
     {
@@ -20,7 +20,7 @@ class UserQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \app\models\User|array|null
+     * @return \app\core\entities\User|array|null
      */
     public function one($db = null)
     {
