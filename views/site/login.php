@@ -5,7 +5,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\LoginForm */
+/* @var $model \app\core\forms\LoginForm */
 
 $this->title = 'Вход в личный кабинет';
 $this->params['breadcrumbs'][] = $this->title;

@@ -2,7 +2,7 @@
 
 namespace tests\models;
 
-use app\models\LoginForm;
+use app\core\forms\LoginForm;
 use app\tests\fixtures\UserFixture;
 
 class LoginFormTest extends \Codeception\Test\Unit

@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use app\models\Authors;
 use app\models\Books;
-use app\models\LoginForm;
+use app\core\forms\LoginForm;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
