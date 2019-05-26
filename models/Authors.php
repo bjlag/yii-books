@@ -49,7 +49,7 @@ class Authors extends \yii\db\ActiveRecord
      */
     public function getBooks()
     {
-        return $this->hasMany(Books::class, ['id' => 'id_book'])->viaTable('books_authors', ['id_author' => 'id']);
+        return $this->hasMany(Books::class, ['id' => 'book_id'])->viaTable('books_authors', ['author_id' => 'id']);
     }
 
     /**
