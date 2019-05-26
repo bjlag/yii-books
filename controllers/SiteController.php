@@ -2,10 +2,10 @@
 
 namespace app\controllers;
 
-use app\core\entities\User;
+use app\core\forms\LoginForm;
+use app\core\services\AuthService;
 use app\models\Authors;
 use app\models\Books;
-use app\core\forms\LoginForm;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
@@ -18,6 +18,15 @@ use yii\web\Response;
  */
 class SiteController extends Controller
 {
+    private $authService;
+
+    public function __construct($id, $module, AuthService $authService, $config = [])
+    {
+        parent::__construct($id, $module, $config);
+
+        $this->authService = $authService;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -149,13 +158,7 @@ class SiteController extends Controller
 
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             try {
-                $user = User::findByUsername($form->username);
-
-                if ($user === null || !$user->validatePassword($form->password)) {
-                    throw new \DomainException('Неверный логин или пароль.');
-                }
-
-                Yii::$app->user->login($user, $form->rememberMe ? Yii::$app->params['remember.me'] : 0);
+                $this->authService->login($form);
 
                 return $this->goBack();
 
@@ -165,7 +168,7 @@ class SiteController extends Controller
             }
         }
 
-        $form->password = '';
+        $form->reset();
 
         return $this->render('login', [
             'model' => $form,
@@ -178,7 +181,7 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
-        Yii::$app->user->logout();
+        $this->authService->logout();
 
         return $this->goHome();
     }
