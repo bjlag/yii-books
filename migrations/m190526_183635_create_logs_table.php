@@ -26,6 +26,6 @@ class m190526_183635_create_logs_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('{{$logs}}');
+        $this->dropTable('{{%logs}}');
     }
 }
